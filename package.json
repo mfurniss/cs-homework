@@ -1,11 +1,12 @@
 {
   "name": "cs-homework",
   "version": "1.0.0",
+  "private": true,
   "description": "CrowdStrike Homework Assignment",
-  "main": "./src/index.js",
+  "source": "src/index.html",
   "scripts": {
-    "start": "parcel ./src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "rm -rfv dist 1> /dev/null && parcel",
+    "build": "rm -rfv dist 1> /dev/null && parcel build"
   },
   "repository": {
     "type": "git",
