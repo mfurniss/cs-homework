@@ -13,10 +13,6 @@
   },
   "author": "Matt Furniss",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mfurniss/cs-homework/issues"
-  },
-  "homepage": "https://github.com/mfurniss/cs-homework#readme",
   "devDependencies": {
     "parcel": "^2.8.3"
   }
