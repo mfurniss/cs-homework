@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "target": "ES2015"
   }
 }
