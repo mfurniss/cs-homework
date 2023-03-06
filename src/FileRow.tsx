@@ -13,7 +13,7 @@ interface Props {
 
 const FileRow: React.FC<Props> = ({ file, selected, onChange }) => {
   return (
-    <tr>
+    <tr data-selected={selected}>
       <td>
         <Checkbox
           checked={selected}

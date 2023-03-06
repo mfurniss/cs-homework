@@ -15,9 +15,10 @@ const a =new Array(10).fill(false);
 const FilesContainer: React.FC<Props> = ({ files }) => {
   const [selected, setSelected] = useState<boolean[]>(new Array(files.length).fill(false))
 
-  const allSelected = selected.every((s) => s);
 
   const handleSelectAll = () => {
+    const allSelected = selected.every((s) => s);
+  
     if (allSelected) {
       setSelected(new Array(files.length).fill(false));
     } 
