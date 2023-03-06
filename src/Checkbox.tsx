@@ -13,6 +13,7 @@ const CbButton = styled.button<{ checked: boolean }>`
 
 interface Props {
   checked: boolean
+  disabled?: boolean
   onChange: (checked: boolean) => void
   nodeChecked?: React.ReactNode
   nodeUnchecked?: React.ReactNode
@@ -20,12 +21,17 @@ interface Props {
 
 const Checkbox: React.FC<Props> = ({
   checked,
+  disabled = false,
   onChange,
   nodeChecked = <MdCheckBox size={24} />,
   nodeUnchecked = <MdCheckBoxOutlineBlank size={24} />,
 }) => {
   return (
-    <CbButton checked={checked} onClick={() => onChange(!checked)}>
+    <CbButton
+      checked={checked}
+      // disabled={disabled}
+      onClick={() => onChange(!checked)}
+    >
       { checked ? nodeChecked : nodeUnchecked}
     </CbButton>
   )
