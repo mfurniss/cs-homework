@@ -24,7 +24,7 @@ const FileRow: React.FC<Props> = ({ file, selected, onChange }) => (
     <td>
       <SelectedIcon style={{ visibility: file.status === 'available' ? 'visible' : 'hidden' }} />
     </td>
-    <td>
+    <td style={{ textTransform: 'capitalize' }}>
       {file.status}
     </td>
   </tr>
