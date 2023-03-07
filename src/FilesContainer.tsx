@@ -29,9 +29,11 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
 
   const handleDownload = () => {
     const text = files.reduce((next: string, file: File) => {
+      /*
       if (file.status !== 'available') {
         return next;
       }
+      */
       return `${next}Path: ${file.path}\nDevice:${file.device}\n\n`
     }, '');
 
