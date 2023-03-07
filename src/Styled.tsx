@@ -66,9 +66,3 @@ export const SelectedIcon = styled.div`
   background-color: #55cd55;
   border-radius: 50%;
 `;
-
-export const Status = styled.div`
-  display: inline-flex;
-  align-items: center;
-  text-transform: capitalize;
-`;

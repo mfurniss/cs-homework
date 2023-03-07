@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { File } from "./useFiles";
 import Checkbox from "./Checkbox";
-import { SelectedIcon, Status } from "./Styled";
+import { SelectedIcon } from "./Styled";
 
 interface Props {
   file: File

@@ -4,6 +4,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "jsx": "preserve",
-    "target": "ES2015"
+    "target": "ES2015",
+    "noUnusedLocals": true
   }
 }

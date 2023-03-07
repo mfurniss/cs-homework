@@ -10,21 +10,11 @@ interface Props {
   files: File[]
 }
 
-const a =new Array(10).fill(false);
-
 const FilesContainer: React.FC<Props> = ({ files }) => {
   const [selected, setSelected] = useState<boolean[]>(new Array(files.length).fill(false))
 
   const handleSelectAll = () => {
-    const allSelected = selected.every((s) => s);
-  
-    if (allSelected) {
-      setSelected(new Array(files.length).fill(false));
-    } 
-    if (!allSelected) {
-      setSelected(new Array(files.length).fill(true));
-    } 
-    console.log('handleSelectAll');
+    setSelected(new Array(files.length).fill(selected.every((s) => !s)));
   };
 
   const handleDownload = () => {
@@ -41,7 +31,6 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
   }
 
   const countSelected = selected.reduce((acc, current) => acc + (current ? 1 : 0), 0);
-  console.log('countSelected', countSelected);
 
   return (
     <Table>
@@ -80,7 +69,6 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
             file={file}
             selected={selected[index]}
             onChange={(selected) => {
-              console.log(selected, file);
               setSelected((prev) => {
                 const r = [...prev];
                 r[index] = selected;
