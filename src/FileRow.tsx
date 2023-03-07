@@ -13,7 +13,7 @@ const FileRow: React.FC<Props> = ({ file, selected, onChange }) => (
   <tr data-selected={selected}>
     <td>
       <Checkbox
-        // disabled={file.status !== 'available'}
+        disabled={file.status !== 'available'}
         checked={selected}
         onChange={(selected: boolean) => onChange(selected)}
       />

@@ -13,12 +13,19 @@ interface Props {
 const FilesContainer: React.FC<Props> = ({ files }) => {
   const [selected, setSelected] = useState<boolean[]>(new Array(files.length).fill(false))
 
-  const handleSelectAll = () => {
-    setSelected(new Array(files.length).fill(selected.every((s) => !s)));
+  const countSelected = selected.reduce((acc, current) => acc + (current ? 1 : 0), 0);
+  const countSelectable = files.reduce((acc, current) => acc + (current.status === 'available' ? 1 : 0), 0);
+
+  const handleSelectAll = (checked: boolean):void => {
+    if (!checked) {
+      setSelected(new Array(files.length).fill(false));
+    } else {
+      setSelected(files.map((file: File) => file.status === 'available'));
+    }
   };
 
-  const handleDownload = () => {
-    const text = files.reduce((next: string, file: File, index: number) => {
+  const handleDownload = ():void => {
+    const text = files.reduce((next: string, file: File, index: number):string => {
       if (!selected[index]) {
         return next;
       }
@@ -28,7 +35,6 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
     alert(text);
   }
 
-  const countSelected = selected.reduce((acc, current) => acc + (current ? 1 : 0), 0);
 
   return (
     <Table>
@@ -37,14 +43,12 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
           <th>
             <Checkbox
               checked={countSelected > 0}
-              onChange={(checked: boolean) => handleSelectAll()}
-              nodeChecked={countSelected < files.length ? <MdIndeterminateCheckBox size={24} /> : undefined}
+              onChange={(checked: boolean) => handleSelectAll(checked)}
+              nodeChecked={countSelected < countSelectable ? <MdIndeterminateCheckBox size={24} /> : undefined}
             />
           </th>
           <th colSpan={5}>
-            <span>
-              Selected {countSelected}
-            </span>
+            Selected {countSelected}
             <DownloadButton onClick={handleDownload} disabled={!countSelected}>
               <IoMdDownload />
               Download Selected
@@ -53,7 +57,7 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
         </tr>
       </thead>
       <tbody>
-         <tr style={{ height: '44px' }}>
+        <tr style={{ height: '44px' }}>
           <th></th>
           <th>Name</th>
           <th>Device</th>

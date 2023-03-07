@@ -4,7 +4,7 @@ const color = {
   border: '#d0d0d0',
   hover: '#f5f5f5',
   selected: '#e8e8e8',
-}
+};
 
 export const Table = styled.table`
   width: 100%;

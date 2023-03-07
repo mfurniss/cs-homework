@@ -9,6 +9,9 @@ const CbButton = styled.button<{ checked: boolean }>`
   margin: 0;
   line-height: 0;
   color: ${({ checked }) => checked ? '#3992b3': '#a0a0a0'};
+  &:disabled {
+    color: #d0d0d0;
+  }
 `;
 
 interface Props {
