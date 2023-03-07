@@ -22,6 +22,7 @@ export const Table = styled.table`
       th {
         font-size: 18px;
         border-top: 1px solid ${color.border};
+        border-bottom: 1px solid ${color.border};
       }
     }
   }

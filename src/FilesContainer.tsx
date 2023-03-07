@@ -18,12 +18,10 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
   };
 
   const handleDownload = () => {
-    const text = files.reduce((next: string, file: File) => {
-      /*
-      if (file.status !== 'available') {
+    const text = files.reduce((next: string, file: File, index: number) => {
+      if (!selected[index]) {
         return next;
       }
-      */
       return `${next}Path: ${file.path}\nDevice:${file.device}\n\n`
     }, '');
 
@@ -53,7 +51,9 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
             </DownloadButton>
           </th>
         </tr>
-        <tr style={{ height: '44px' }}>
+      </thead>
+      <tbody>
+         <tr style={{ height: '44px' }}>
           <th></th>
           <th>Name</th>
           <th>Device</th>
@@ -61,8 +61,6 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
           <th style={{ width: '1%' }}></th>
           <th>Status</th>
         </tr>
-      </thead>
-      <tbody>
         { files.map((file: File, index: number) => (
           <FileRow
             key={file.name}
