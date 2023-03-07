@@ -47,7 +47,7 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
             />
           </th>
           <th colSpan={5}>
-            Selected {countSelected}
+            {countSelected ? `Selected ${countSelected}` : 'None Selected'}
             <DownloadButton onClick={handleDownload} disabled={!countSelected}>
               <IoMdDownload />
               Download Selected
