@@ -1,5 +1,5 @@
 import React from "react";
-import { File } from "./useFiles";
+import { File, FileStatus } from "./useFiles";
 import Checkbox from "./Checkbox";
 import { SelectedIcon } from "./Styled";
 
@@ -13,7 +13,7 @@ const FileRow: React.FC<Props> = ({ file, selected, onChange }) => (
   <tr data-selected={selected}>
     <td>
       <Checkbox
-        disabled={file.status !== 'available'}
+        disabled={file.status !== FileStatus.Available}
         checked={selected}
         onChange={(selected: boolean) => onChange(selected)}
       />
@@ -22,7 +22,11 @@ const FileRow: React.FC<Props> = ({ file, selected, onChange }) => (
     <td>{file.device}</td>
     <td>{file.path}</td>
     <td>
-      <SelectedIcon style={{ visibility: file.status === 'available' ? 'visible' : 'hidden' }} />
+      <SelectedIcon
+        style={{
+          visibility: file.status === FileStatus.Available ? 'visible' : 'hidden'
+        }}
+      />
     </td>
     <td style={{ textTransform: 'capitalize' }}>
       {file.status}

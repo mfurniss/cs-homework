@@ -7,4 +7,9 @@ export interface File {
   status: string
 }
 
+export enum FileStatus {
+  Available = 'available',
+  Scheduled = 'scheduled'
+}
+
 export default (): File[] => data;

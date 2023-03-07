@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdIndeterminateCheckBox } from 'react-icons/md';
 import { IoMdDownload } from 'react-icons/io';
-import { File } from "./useFiles";
+import { File, FileStatus } from "./useFiles";
 import Checkbox from "./Checkbox";
 import { Table, DownloadButton } from "./Styled";
 import FileRow from "./FileRow";
@@ -14,13 +14,13 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
   const [selected, setSelected] = useState<boolean[]>(new Array(files.length).fill(false))
 
   const countSelected = selected.reduce((acc, current) => acc + (current ? 1 : 0), 0);
-  const countSelectable = files.reduce((acc, current) => acc + (current.status === 'available' ? 1 : 0), 0);
+  const countSelectable = files.reduce((acc, current) => acc + (current.status === FileStatus.Available ? 1 : 0), 0);
 
   const handleSelectAll = (checked: boolean):void => {
     if (!checked) {
       setSelected(new Array(files.length).fill(false));
     } else {
-      setSelected(files.map((file: File) => file.status === 'available'));
+      setSelected(files.map((file: File) => file.status === FileStatus.Available));
     }
   };
 
@@ -34,7 +34,6 @@ const FilesContainer: React.FC<Props> = ({ files }) => {
 
     alert(text);
   }
-
 
   return (
     <Table>
